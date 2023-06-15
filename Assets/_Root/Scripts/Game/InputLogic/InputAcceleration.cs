@@ -18,7 +18,7 @@ namespace Game.InputLogic
         private void Move()
         {
             Vector3 direction = CalcDirection();
-            float moveValue = _speed * _inputMultiplier * Time.deltaTime * direction.x;
+            float moveValue = Speed * _inputMultiplier * Time.deltaTime * direction.x;
 
             float abs = Mathf.Abs(moveValue);
             float sign = Mathf.Sign(moveValue);
@@ -27,11 +27,6 @@ namespace Game.InputLogic
                 OnRightMove(abs);
             else
                 OnLeftMove(abs);
-            
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
-            
-            if (horizontalInput > 0) OnRightMove(_speed * Time.deltaTime);
-            else if (horizontalInput < 0) OnLeftMove(_speed * Time.deltaTime);
         }
 
         private Vector3 CalcDirection()
